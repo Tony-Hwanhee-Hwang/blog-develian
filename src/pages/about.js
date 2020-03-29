@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
 
+import { Head } from '../components/head'
 import { rhythm } from '../utils/typography'
+import { ThemeSwitch } from '../components/theme-switch'
 import * as Lang from '../constants'
+
+import '../styles/resume.scss'
 
 export default ({ data }) => {
   const resumes = data.allMarkdownRemark.edges
@@ -13,6 +17,7 @@ export default ({ data }) => {
 
   return (
     <div
+      className="about"
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
@@ -22,6 +27,7 @@ export default ({ data }) => {
         )}`,
       }}
     >
+      <ThemeSwitch />
       <div dangerouslySetInnerHTML={{ __html: resume.html }} />
     </div>
   )
